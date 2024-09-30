@@ -1027,6 +1027,11 @@ jobs:
             echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
         env:
             OWNER: '${{ github.repository_owner }}'
+      - name: ls
+        run: |
+          ls
+          echo "============="
+          ls build
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
