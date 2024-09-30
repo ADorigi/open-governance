@@ -129,6 +129,7 @@ jobs:
           if [ ! -z "$(cat ./build_services)" ]; then
             for f in $(cat ./build_services); do
               CC=/usr/bin/musl-gcc GOPRIVATE="github.com/kaytu-io" GOOS=linux GOARCH=amd64 go build -v -ldflags "-linkmode external -extldflags '-static' -s -w" -tags musl -o ./build/ ./cmd/$f;
+              echo $f
             done
             chmod +x ./build/*
           fi
@@ -1004,6 +1005,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
+    if: needs.build.outputs.health-check-service == 'true'
     environment: docker
     steps:
       - name: Checkout code
