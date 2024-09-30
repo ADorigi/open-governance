@@ -37,7 +37,7 @@ jobs:
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.1
         with:
-          github_token: ${{ secrets.GH_ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           release_branches: main
           tag_prefix: v
       - name: Set latest tag output
@@ -78,7 +78,7 @@ jobs:
       health-check-service: ${{ steps.build_services.outputs.health-check-service }}
     env:
       SERVICE_LIST: ${{ github.event.inputs.servicesList }}
-      GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
@@ -116,7 +116,7 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
-      - run: git config --global url.https://$GH_ACCESS_TOKEN@github.com/kaytu-io.insteadOf https://github.com/kaytu-io
+      - run: git config --global url.https://$GITHUB_TOKEN@github.com/kaytu-io.insteadOf https://github.com/kaytu-io
       - name: Build services
         id: build_services
         run: |
@@ -171,7 +171,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -208,7 +208,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -243,7 +243,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -279,7 +279,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -316,7 +316,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -353,7 +353,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -388,7 +388,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -423,7 +423,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -458,7 +458,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -493,7 +493,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -528,7 +528,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -563,7 +563,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -598,7 +598,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -633,7 +633,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -676,7 +676,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -712,7 +712,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -764,7 +764,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         if: steps.check_if_push.outputs.do_build == 'true'
         uses: docker/build-push-action@v4
@@ -801,7 +801,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -836,7 +836,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -871,7 +871,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -898,7 +898,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -925,7 +925,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -962,7 +962,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -987,7 +987,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
@@ -1013,7 +1013,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
