@@ -1014,11 +1014,16 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: set lower case owner name
+        run: |
+            echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+        env:
+            OWNER: '${{ github.repository_owner }}'
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/health-check:${{ needs.tag.outputs.latest_tag }}-${{ github.event.inputs.deployTo == '' && 'dev' || github.event.inputs.deployTo }}
+            ghcr.io/${{ env.OWNER_LC }}/health-check:${{ needs.tag.outputs.latest_tag }}-${{ github.event.inputs.deployTo == '' && 'dev' || github.event.inputs.deployTo }}
           file: docker/HealthCheckDockerfile
           context: .
